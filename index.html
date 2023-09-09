@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #919090;
+            border-radius: 3px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="img/FrangoRicoLogo.png" alt="Logo Da Frango Rico" width="150px">
+        <h1>Tela de Login</h1>
+        <h2>Manutenção Elétrica</h2>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Nome de usuário" required>
+            <input type="password" id="password" placeholder="Senha" required>
+            <button type="submit" style="background-color: #25f80a; color: #000000; border: none;  padding: 10px 20px;  border-radius: 3px; cursor: pointer; ">Entrar</button>
+            <button type="reset" style="background-color: #f83a0a; color: #000000; border: none;  padding: 10px 20px;  border-radius: 3px; cursor: pointer; ">Cancelar</button>
+        </form>
+        <p id="error-message" style="color: red;"></p>
+    </div>
+
+    <script>
+        // Objeto que armazena os pares de nome de usuário e senha válidos
+        var validUsers = {
+            "dyeison": "123",
+            "jeovane": "456",
+            "leonardo": "123",
+            "iago": "789"
+        };
+
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            // Obter valores dos campos
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // Verificar se o nome de usuário e senha correspondem a um conjunto válido
+            if (validUsers[username] === password) {
+                // Credenciais válidas, redirecionar para a página de boas-vindas
+                window.location.href = "home.html";
+                alert('Seja Bem Vindo')
+            } else {
+                // Credenciais inválidas, exibir mensagem de erro
+                document.getElementById("error-message").textContent = "Usuario ou senha incorreto.";
+            }
+        });
+    </script>
+</body>
+</html>
+
+
